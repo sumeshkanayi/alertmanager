@@ -405,7 +405,9 @@ type WebhookConfig struct {
 	HTTPConfig *commoncfg.HTTPClientConfig `yaml:"http_config,omitempty" json:"http_config,omitempty"`
 
 	// URL to send POST request to.
-	URL *URL `yaml:"url" json:"url"`
+	URL          *URL   `yaml:"url" json:"url"`
+	HEADER       string `yaml:"header_key" json:"header_key"`
+	HEADER_VALUE string `yaml:"header_value" json:"header_value"`
 }
 
 // UnmarshalYAML implements the yaml.Unmarshaler interface.

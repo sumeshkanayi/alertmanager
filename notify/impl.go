@@ -164,7 +164,9 @@ func (w *Webhook) Notify(ctx context.Context, alerts ...*types.Alert) (bool, err
 	}
 	req.Header.Set("Content-Type", contentTypeJSON)
 	req.Header.Set("User-Agent", userAgentHeader)
-
+	if w.conf.HEADER != "" {
+		req.Header.Set(w.conf.HEADER, w.conf.HEADER_VALUE)
+	}
 	c, err := commoncfg.NewClientFromConfig(*w.conf.HTTPConfig, "webhook")
 	if err != nil {
 		return false, err
