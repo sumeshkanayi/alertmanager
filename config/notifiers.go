@@ -21,6 +21,11 @@ import (
 	commoncfg "github.com/prometheus/common/config"
 )
 
+type header_struct struct {
+	HEADER_KEY string `yaml:"header_key" json:"header_key"`
+	HEADER_VAL string `yaml:"header_value" json:"header_val"`
+}
+
 var (
 	// DefaultWebhookConfig defines default values for Webhook configurations.
 	DefaultWebhookConfig = WebhookConfig{
@@ -406,6 +411,8 @@ type WebhookConfig struct {
 
 	// URL to send POST request to.
 	URL *URL `yaml:"url" json:"url"`
+	Headers []header_struct `yaml:"headers" json:"headers"`
+
 }
 
 // UnmarshalYAML implements the yaml.Unmarshaler interface.

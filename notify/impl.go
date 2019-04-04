@@ -20,18 +20,17 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/go-kit/kit/log"
+	"github.com/go-kit/kit/log/level"
+	commoncfg "github.com/prometheus/common/config"
+	"github.com/prometheus/common/model"
+	"github.com/prometheus/common/version"
 	"io"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
 	"time"
-
-	"github.com/go-kit/kit/log"
-	"github.com/go-kit/kit/log/level"
-	commoncfg "github.com/prometheus/common/config"
-	"github.com/prometheus/common/model"
-	"github.com/prometheus/common/version"
 
 	"github.com/prometheus/alertmanager/config"
 	"github.com/prometheus/alertmanager/template"
@@ -162,8 +161,20 @@ func (w *Webhook) Notify(ctx context.Context, alerts ...*types.Alert) (bool, err
 	if err != nil {
 		return true, err
 	}
+	customHeaders:=w.conf.Headers
+	for _,item:=range customHeaders{
+		if item.HEADER_KEY!=""{
+
+			req.Header.Set(item.HEADER_KEY,item.HEADER_VAL)
+
+		}
+
+	}
+
 	req.Header.Set("Content-Type", contentTypeJSON)
 	req.Header.Set("User-Agent", userAgentHeader)
+
+
 
 	c, err := commoncfg.NewClientFromConfig(*w.conf.HTTPConfig, "webhook")
 	if err != nil {
