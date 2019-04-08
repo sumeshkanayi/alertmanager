@@ -429,8 +429,8 @@ type TritonConfig struct {
 	Key      string   `yaml:"key" json:"key"`
 	Networks []string `yaml:"networks" json:"networks"`
 	Services []string `yaml:"services" json:"services"`
-	Image    string   `yaml:"network" json:"network"`
-	Package  string   `yaml:"network" json:"network"`
+	Image    string   `yaml:"image" json:"image"`
+	Package  string   `yaml:"package" json:"package"`
 }
 
 // UnmarshalYAML implements the yaml.Unmarshaler interface.
