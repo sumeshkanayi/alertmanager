@@ -1,31 +1,30 @@
 package notify
 
 import (
-	triton "github.com/joyent/triton-go"
+	"github.com/joyent/triton-go"
 	"github.com/joyent/triton-go/authentication"
 	"github.com/joyent/triton-go/compute"
 
 	"context"
 	"encoding/pem"
-	"fmt"
+	_ "fmt"
 	"io/ioutil"
 	"log"
 	"os"
 )
 
-func createTritonInstance(keyID string, userName string, packageName string, imageName string, network string, cloudApi string) {
+func createTritonInstance(keyID string, accountName string, packageName string, imageName string, networks []string, cloudApi string, services []string) {
 
-	accountName := os.Getenv("TRITON_ACCOUNT")
 	keyMaterial := os.Getenv("TRITON_KEY_MATERIAL")
 
 	var signer authentication.Signer
 	var err error
 
 	if keyMaterial == "" {
+
 		input := authentication.SSHAgentSignerInput{
 			KeyID:       keyID,
 			AccountName: accountName,
-			Username:    userName,
 		}
 
 		signer, err = authentication.NewSSHAgentSigner(input)
@@ -62,7 +61,6 @@ func createTritonInstance(keyID string, userName string, packageName string, ima
 			KeyID:              keyID,
 			PrivateKeyMaterial: keyBytes,
 			AccountName:        accountName,
-			Username:           userName,
 		}
 		signer, err = authentication.NewPrivateKeySigner(input)
 		if err != nil {
@@ -73,13 +71,29 @@ func createTritonInstance(keyID string, userName string, packageName string, ima
 	config := &triton.ClientConfig{
 		TritonURL:   cloudApi,
 		AccountName: accountName,
-		Username:    userName,
 		Signers:     []authentication.Signer{signer},
 	}
 
 	c, err := compute.NewClient(config)
 	if err != nil {
 		log.Fatalf("compute.NewClient: %s", err)
+		log.Println("clinet is ", c)
 	}
+	computeInstance := c.Instances()
+	ctx := context.Background()
+
+	cns := compute.InstanceCNS{
+		Disable:  false,
+		Services: services,
+	}
+	input := &compute.CreateInstanceInput{
+
+		NamePrefix: accountName,
+		Package:    packageName,
+		Image:      imageName,
+		Networks:   networks,
+		CNS:        cns,
+	}
+	computeInstance.Create(ctx, input)
 
 }
