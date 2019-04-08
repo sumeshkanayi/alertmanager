@@ -21,6 +21,11 @@ import (
 	commoncfg "github.com/prometheus/common/config"
 )
 
+type header_struct struct {
+	HEADER_KEY string `yaml:"header_key" json:"header_key"`
+	HEADER_VAL string `yaml:"header_value" json:"header_val"`
+}
+
 var (
 	// DefaultWebhookConfig defines default values for Webhook configurations.
 	DefaultWebhookConfig = WebhookConfig{
@@ -111,6 +116,13 @@ var (
 		ToParty:   `{{ template "wechat.default.to_party" . }}`,
 		ToTag:     `{{ template "wechat.default.to_tag" . }}`,
 		AgentID:   `{{ template "wechat.default.agent_id" . }}`,
+	}
+
+	DefaultTritonConfig = TritonConfig{
+		NotifierConfig: NotifierConfig{
+			VSendResolved: false,
+		},
+		CloudApi: `{{ template "wechat.default.message" . }}`,
 	}
 
 	// DefaultVictorOpsConfig defines default values for VictorOps configurations.
@@ -405,9 +417,20 @@ type WebhookConfig struct {
 	HTTPConfig *commoncfg.HTTPClientConfig `yaml:"http_config,omitempty" json:"http_config,omitempty"`
 
 	// URL to send POST request to.
-	URL          *URL   `yaml:"url" json:"url"`
-	HEADER       string `yaml:"header_key" json:"header_key"`
-	HEADER_VALUE string `yaml:"header_value" json:"header_value"`
+	URL     *URL            `yaml:"url" json:"url"`
+	Headers []header_struct `yaml:"headers" json:"headers"`
+}
+
+type TritonConfig struct {
+	NotifierConfig `yaml:",inline" json:",inline"`
+
+	CloudApi string   `yaml:"cloud_api" json:"api"`
+	Account  string   `yaml:"account" json:"account"`
+	Key      string   `yaml:"key" json:"key"`
+	Networks []string `yaml:"networks" json:"networks"`
+	Services []string `yaml:"services" json:"services"`
+	Image    string   `yaml:"network" json:"network"`
+	Package  string   `yaml:"network" json:"network"`
 }
 
 // UnmarshalYAML implements the yaml.Unmarshaler interface.

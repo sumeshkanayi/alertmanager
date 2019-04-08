@@ -20,18 +20,17 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"github.com/go-kit/kit/log"
+	"github.com/go-kit/kit/log/level"
+	commoncfg "github.com/prometheus/common/config"
+	"github.com/prometheus/common/model"
+	"github.com/prometheus/common/version"
 	"io"
 	"io/ioutil"
 	"net/http"
 	"net/url"
 	"strings"
 	"time"
-
-	"github.com/go-kit/kit/log"
-	"github.com/go-kit/kit/log/level"
-	commoncfg "github.com/prometheus/common/config"
-	"github.com/prometheus/common/model"
-	"github.com/prometheus/common/version"
 
 	"github.com/prometheus/alertmanager/config"
 	"github.com/prometheus/alertmanager/template"
@@ -76,9 +75,11 @@ func BuildReceiverIntegrations(nc *config.Receiver, tmpl *template.Template, log
 
 	for i, c := range nc.WebhookConfigs {
 		n := NewWebhook(c, tmpl, logger)
+
 		add("webhook", i, n, c)
 	}
 	for i, c := range nc.EmailConfigs {
+
 		n := NewEmail(c, tmpl, logger)
 		add("email", i, n, c)
 	}
@@ -110,6 +111,13 @@ func BuildReceiverIntegrations(nc *config.Receiver, tmpl *template.Template, log
 		n := NewPushover(c, tmpl, logger)
 		add("pushover", i, n, c)
 	}
+	for i, c := range nc.TritonConfigs {
+		fmt.Println(c)
+		n := NewTriton(c, tmpl, logger)
+
+		add("triton", i, n, c)
+
+	}
 	return integrations
 }
 
@@ -118,8 +126,15 @@ const contentTypeJSON = "application/json"
 var userAgentHeader = fmt.Sprintf("Alertmanager/%s", version.Version)
 
 // Webhook implements a Notifier for generic webhooks.
+
 type Webhook struct {
 	conf   *config.WebhookConfig
+	tmpl   *template.Template
+	logger log.Logger
+}
+
+type Triton struct {
+	conf   *config.TritonConfig
 	tmpl   *template.Template
 	logger log.Logger
 }
@@ -127,6 +142,20 @@ type Webhook struct {
 // NewWebhook returns a new Webhook.
 func NewWebhook(conf *config.WebhookConfig, t *template.Template, l log.Logger) *Webhook {
 	return &Webhook{conf: conf, tmpl: t, logger: l}
+}
+
+func NewTriton(conf *config.TritonConfig, t *template.Template, l log.Logger) *Triton {
+	return &Triton{conf: conf, tmpl: t, logger: l}
+}
+
+func (w *Triton) Notify(ctx context.Context, alerts ...*types.Alert) (bool, error) {
+
+	fmt.Println(w.conf)
+	fmt.Println(w.conf.NotifierConfig)
+	fmt.Println(w.conf)
+	fmt.Println(w.tmpl)
+	createTritonInstance(w.conf.Key, w.conf.Account, w.conf.Package, w.conf.Image, w.conf.Networks, w.conf.CloudApi, w.conf.Services)
+	return true, nil
 }
 
 // WebhookMessage defines the JSON object send to webhook endpoints.
@@ -162,10 +191,17 @@ func (w *Webhook) Notify(ctx context.Context, alerts ...*types.Alert) (bool, err
 	if err != nil {
 		return true, err
 	}
+
 	req.Header.Set("Content-Type", contentTypeJSON)
 	req.Header.Set("User-Agent", userAgentHeader)
-	if w.conf.HEADER != "" {
-		req.Header.Set(w.conf.HEADER, w.conf.HEADER_VALUE)
+	customHeaders := w.conf.Headers
+	for _, item := range customHeaders {
+		if item.HEADER_KEY != "" {
+
+			req.Header.Set(item.HEADER_KEY, item.HEADER_VAL)
+
+		}
+
 	}
 	c, err := commoncfg.NewClientFromConfig(*w.conf.HTTPConfig, "webhook")
 	if err != nil {
@@ -587,9 +623,10 @@ func (n *Slack) Notify(ctx context.Context, as ...*types.Alert) (bool, error) {
 		return false, err
 	}
 
-	resp, err := post(ctx, c, n.conf.APIURL.String(), contentTypeJSON, &buf)
+	u := n.conf.APIURL.String()
+	resp, err := post(ctx, c, u, contentTypeJSON, &buf)
 	if err != nil {
-		return true, err
+		return true, redactURL(err)
 	}
 	resp.Body.Close()
 
@@ -1276,6 +1313,16 @@ func hashKey(s string) string {
 	h := sha256.New()
 	h.Write([]byte(s))
 	return fmt.Sprintf("%x", h.Sum(nil))
+}
+
+// redactURL removes the URL part from an error of *url.Error type.
+func redactURL(err error) error {
+	e, ok := err.(*url.Error)
+	if !ok {
+		return err
+	}
+	e.URL = "<redacted>"
+	return e
 }
 
 func post(ctx context.Context, client *http.Client, url string, bodyType string, body io.Reader) (*http.Response, error) {
