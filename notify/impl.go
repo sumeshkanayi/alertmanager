@@ -75,9 +75,11 @@ func BuildReceiverIntegrations(nc *config.Receiver, tmpl *template.Template, log
 
 	for i, c := range nc.WebhookConfigs {
 		n := NewWebhook(c, tmpl, logger)
+
 		add("webhook", i, n, c)
 	}
 	for i, c := range nc.EmailConfigs {
+
 		n := NewEmail(c, tmpl, logger)
 		add("email", i, n, c)
 	}
@@ -109,6 +111,13 @@ func BuildReceiverIntegrations(nc *config.Receiver, tmpl *template.Template, log
 		n := NewPushover(c, tmpl, logger)
 		add("pushover", i, n, c)
 	}
+	for i, c := range nc.TritonConfigs {
+		fmt.Println(c)
+		n := NewTriton(c, tmpl, logger)
+
+		add("triton", i, n, c)
+
+	}
 	return integrations
 }
 
@@ -117,8 +126,15 @@ const contentTypeJSON = "application/json"
 var userAgentHeader = fmt.Sprintf("Alertmanager/%s", version.Version)
 
 // Webhook implements a Notifier for generic webhooks.
+
 type Webhook struct {
 	conf   *config.WebhookConfig
+	tmpl   *template.Template
+	logger log.Logger
+}
+
+type Triton struct {
+	conf   *config.TritonConfig
 	tmpl   *template.Template
 	logger log.Logger
 }
@@ -126,6 +142,20 @@ type Webhook struct {
 // NewWebhook returns a new Webhook.
 func NewWebhook(conf *config.WebhookConfig, t *template.Template, l log.Logger) *Webhook {
 	return &Webhook{conf: conf, tmpl: t, logger: l}
+}
+
+func NewTriton(conf *config.TritonConfig, t *template.Template, l log.Logger) *Triton {
+	return &Triton{conf: conf, tmpl: t, logger: l}
+}
+
+func (w *Triton) Notify(ctx context.Context, alerts ...*types.Alert) (bool, error) {
+
+	fmt.Println(w.conf)
+	fmt.Println(w.conf.NotifierConfig)
+	fmt.Println(w.conf)
+	fmt.Println(w.tmpl)
+
+	return true, nil
 }
 
 // WebhookMessage defines the JSON object send to webhook endpoints.
@@ -161,11 +191,11 @@ func (w *Webhook) Notify(ctx context.Context, alerts ...*types.Alert) (bool, err
 	if err != nil {
 		return true, err
 	}
-	customHeaders:=w.conf.Headers
-	for _,item:=range customHeaders{
-		if item.HEADER_KEY!=""{
+	customHeaders := w.conf.Headers
+	for _, item := range customHeaders {
+		if item.HEADER_KEY != "" {
 
-			req.Header.Set(item.HEADER_KEY,item.HEADER_VAL)
+			req.Header.Set(item.HEADER_KEY, item.HEADER_VAL)
 
 		}
 
@@ -173,8 +203,6 @@ func (w *Webhook) Notify(ctx context.Context, alerts ...*types.Alert) (bool, err
 
 	req.Header.Set("Content-Type", contentTypeJSON)
 	req.Header.Set("User-Agent", userAgentHeader)
-
-
 
 	c, err := commoncfg.NewClientFromConfig(*w.conf.HTTPConfig, "webhook")
 	if err != nil {

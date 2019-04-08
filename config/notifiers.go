@@ -118,6 +118,13 @@ var (
 		AgentID:   `{{ template "wechat.default.agent_id" . }}`,
 	}
 
+	DefaultTritonConfig = TritonConfig{
+		NotifierConfig: NotifierConfig{
+			VSendResolved: false,
+		},
+		API: `{{ template "wechat.default.message" . }}`,
+	}
+
 	// DefaultVictorOpsConfig defines default values for VictorOps configurations.
 	DefaultVictorOpsConfig = VictorOpsConfig{
 		NotifierConfig: NotifierConfig{
@@ -410,9 +417,17 @@ type WebhookConfig struct {
 	HTTPConfig *commoncfg.HTTPClientConfig `yaml:"http_config,omitempty" json:"http_config,omitempty"`
 
 	// URL to send POST request to.
-	URL *URL `yaml:"url" json:"url"`
+	URL     *URL            `yaml:"url" json:"url"`
 	Headers []header_struct `yaml:"headers" json:"headers"`
+}
 
+type TritonConfig struct {
+	NotifierConfig `yaml:",inline" json:",inline"`
+
+	cloudApi      string `yaml:"cloud_api" json:"api"`
+	tritonAccount string `yaml:"account" json:"account"`
+	userName      string `yaml:"user" json:"user"`
+	key           string `yaml:"key_id" json:"key_id"`
 }
 
 // UnmarshalYAML implements the yaml.Unmarshaler interface.
