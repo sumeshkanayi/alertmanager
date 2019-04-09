@@ -33,9 +33,9 @@ import (
 	"github.com/go-kit/kit/log/level"
 	commoncfg "github.com/prometheus/common/config"
 
-	"github.com/sumeshkanayi/alertmanager/config"
-	"github.com/sumeshkanayi/alertmanager/template"
-	"github.com/sumeshkanayi/alertmanager/types"
+	"github.com/prometheus/alertmanager/config"
+	"github.com/prometheus/alertmanager/template"
+	"github.com/prometheus/alertmanager/types"
 )
 
 // Email implements a Notifier for email notifications.

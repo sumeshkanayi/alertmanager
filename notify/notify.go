@@ -27,16 +27,14 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/common/model"
 
-
 	"github.com/prometheus/alertmanager/cluster"
-	"github.com/sumeshkanayi/alertmanager/config"
+	"github.com/prometheus/alertmanager/config"
 	"github.com/prometheus/alertmanager/inhibit"
 	"github.com/prometheus/alertmanager/nflog"
 	"github.com/prometheus/alertmanager/nflog/nflogpb"
 	"github.com/prometheus/alertmanager/silence"
-	"github.com/sumeshkanayi/alertmanager/template"
-	"github.com/sumeshkanayi/alertmanager/types"
-
+	"github.com/prometheus/alertmanager/template"
+	"github.com/prometheus/alertmanager/types"
 )
 
 var (
