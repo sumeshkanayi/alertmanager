@@ -123,6 +123,7 @@ var (
 			VSendResolved: false,
 		},
 		CloudApi: `{{ template "wechat.default.message" . }}`,
+		Count:1,
 	}
 
 	// DefaultVictorOpsConfig defines default values for VictorOps configurations.
@@ -431,6 +432,7 @@ type TritonConfig struct {
 	Services []string `yaml:"services" json:"services"`
 	Image    string   `yaml:"image" json:"image"`
 	Package  string   `yaml:"package" json:"package"`
+	Count int `yaml:"count" json:"count"`
 }
 
 // UnmarshalYAML implements the yaml.Unmarshaler interface.

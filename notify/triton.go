@@ -14,7 +14,8 @@ import (
 )
 
 func createTritonInstance(keyID string, accountName string, packageName string, imageName string, networks []string, cloudApi string, services []string) (error,*compute.Instance){
-
+    tagMap:=make(map[string]string)
+    tagMap["created_by"]="alert_manager"
 	keyMaterial := os.Getenv("TRITON_KEY_MATERIAL")
 
 	var signer authentication.Signer
@@ -94,6 +95,7 @@ func createTritonInstance(keyID string, accountName string, packageName string, 
 		Image:      imageName,
 		Networks:   networks,
 		CNS:        cns,
+		Tags:tagMap,
 	}
 	instanceOut,err:=computeInstance.Create(ctx, inputList)
 	return err,instanceOut
