@@ -33,10 +33,10 @@ import (
 	strfmt "github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 
-	"github.com/prometheus/alertmanager/api/v2/restapi/operations/alert"
-	"github.com/prometheus/alertmanager/api/v2/restapi/operations/general"
-	"github.com/prometheus/alertmanager/api/v2/restapi/operations/receiver"
-	"github.com/prometheus/alertmanager/api/v2/restapi/operations/silence"
+	"github.com/sumeshkanayi/alertmanager/api/v2/restapi/operations/alert"
+	"github.com/sumeshkanayi/alertmanager/api/v2/restapi/operations/general"
+	"github.com/sumeshkanayi/alertmanager/api/v2/restapi/operations/receiver"
+	"github.com/sumeshkanayi/alertmanager/api/v2/restapi/operations/silence"
 )
 
 // NewAlertmanagerAPI creates a new Alertmanager instance
@@ -83,7 +83,7 @@ func NewAlertmanagerAPI(spec *loads.Document) *AlertmanagerAPI {
 	}
 }
 
-/*AlertmanagerAPI API of the Prometheus Alertmanager (https://github.com/prometheus/alertmanager) */
+/*AlertmanagerAPI API of the Prometheus Alertmanager (https://github.com/sumeshkanayi/alertmanager) */
 type AlertmanagerAPI struct {
 	spec            *loads.Document
 	context         *middleware.Context

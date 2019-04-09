@@ -1,7 +1,7 @@
-# Alertmanager [![Build Status](https://travis-ci.org/prometheus/alertmanager.svg?branch=master)][travis]
+# Alertmanager [![Build Status](https://travis-ci.org/sumeshkanayi/alertmanager.svg?branch=master)][travis]
 
-[![CircleCI](https://circleci.com/gh/prometheus/alertmanager/tree/master.svg?style=shield)][circleci]
-[![Docker Repository on Quay](https://quay.io/repository/prometheus/alertmanager/status)][quay]
+[![CircleCI](https://circleci.com/gh/sumeshkanayi/alertmanager/tree/master.svg?style=shield)][circleci]
+[![Docker Repository on Quay](https://quay.io/repository/sumeshkanayi/alertmanager/status)][quay]
 [![Docker Pulls](https://img.shields.io/docker/pulls/prom/alertmanager.svg?maxAge=604800)][hub]
 
 The Alertmanager handles alerts sent by client applications such as the Prometheus server. It takes care of deduplicating, grouping, and routing them to the correct receiver integrations such as email, PagerDuty, or OpsGenie. It also takes care of silencing and inhibition of alerts.
@@ -22,15 +22,15 @@ is the recommended way of installing Alertmanager.
 
 ### Docker images
 
-Docker images are available on [Quay.io](https://quay.io/repository/prometheus/alertmanager).
+Docker images are available on [Quay.io](https://quay.io/repository/sumeshkanayi/alertmanager).
 
 ### Compiling the binary
 
 You can either `go get` it:
 
 ```
-$ GO15VENDOREXPERIMENT=1 go get github.com/prometheus/alertmanager/cmd/...
-# cd $GOPATH/src/github.com/prometheus/alertmanager
+$ GO15VENDOREXPERIMENT=1 go get github.com/sumeshkanayi/alertmanager/cmd/...
+# cd $GOPATH/src/github.com/sumeshkanayi/alertmanager
 $ alertmanager --config.file=<your_file>
 ```
 
@@ -39,7 +39,7 @@ Or checkout the source code and build manually:
 ```
 $ mkdir -p $GOPATH/src/github.com/prometheus
 $ cd $GOPATH/src/github.com/prometheus
-$ git clone https://github.com/prometheus/alertmanager.git
+$ git clone https://github.com/sumeshkanayi/alertmanager.git
 $ cd alertmanager
 $ make build
 $ ./alertmanager --config.file=<your_file>
@@ -186,7 +186,7 @@ and [Go Swagger](https://github.com/go-swagger/go-swagger/) with the exception
 of the HTTP handlers themselves. The API specification can be found in
 [api/v2/openapi.yaml](api/v2/openapi.yaml). A HTML rendered version can be
 accessed
-[here](http://petstore.swagger.io/?url=https://raw.githubusercontent.com/prometheus/alertmanager/master/api/v2/openapi.yaml).
+[here](http://petstore.swagger.io/?url=https://raw.githubusercontent.com/sumeshkanayi/alertmanager/master/api/v2/openapi.yaml).
 Clients can be easily generated via any OpenAPI generator for all major
 languages.
 
@@ -200,7 +200,7 @@ _API v2 is still under heavy development and thereby subject to change._
 
 Alternatively you can install with:
 ```
-go get github.com/prometheus/alertmanager/cmd/amtool
+go get github.com/sumeshkanayi/alertmanager/cmd/amtool
 ```
 
 ### Examples
@@ -389,7 +389,7 @@ Refer to [ui/app/CONTRIBUTING.md](ui/app/CONTRIBUTING.md).
 ![](doc/arch.svg)
 
 
-[travis]: https://travis-ci.org/prometheus/alertmanager
+[travis]: https://travis-ci.org/sumeshkanayi/alertmanager
 [hub]: https://hub.docker.com/r/prom/alertmanager/
-[circleci]: https://circleci.com/gh/prometheus/alertmanager
-[quay]: https://quay.io/repository/prometheus/alertmanager
+[circleci]: https://circleci.com/gh/sumeshkanayi/alertmanager
+[quay]: https://quay.io/repository/sumeshkanayi/alertmanager

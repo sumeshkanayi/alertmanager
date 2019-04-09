@@ -18,7 +18,7 @@ import (
 	"errors"
 
 	"github.com/go-openapi/strfmt"
-	"github.com/prometheus/alertmanager/api/v2/client/silence"
+	"github.com/sumeshkanayi/alertmanager/api/v2/client/silence"
 	kingpin "gopkg.in/alecthomas/kingpin.v2"
 )
 

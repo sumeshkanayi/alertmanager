@@ -25,8 +25,8 @@ import (
 
 	"github.com/go-kit/kit/log"
 	"github.com/kylelemons/godebug/pretty"
-	"github.com/prometheus/alertmanager/store"
-	"github.com/prometheus/alertmanager/types"
+	"github.com/sumeshkanayi/alertmanager/store"
+	"github.com/sumeshkanayi/alertmanager/types"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/common/model"
 	"github.com/stretchr/testify/require"

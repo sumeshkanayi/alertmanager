@@ -19,7 +19,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/prometheus/alertmanager/types"
+	"github.com/sumeshkanayi/alertmanager/types"
 	"github.com/prometheus/common/model"
 )
 

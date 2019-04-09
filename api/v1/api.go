@@ -31,14 +31,14 @@ import (
 	"github.com/prometheus/common/version"
 	"github.com/prometheus/prometheus/pkg/labels"
 
-	"github.com/prometheus/alertmanager/cluster"
-	"github.com/prometheus/alertmanager/config"
-	"github.com/prometheus/alertmanager/dispatch"
-	"github.com/prometheus/alertmanager/pkg/parse"
-	"github.com/prometheus/alertmanager/provider"
-	"github.com/prometheus/alertmanager/silence"
-	"github.com/prometheus/alertmanager/silence/silencepb"
-	"github.com/prometheus/alertmanager/types"
+	"github.com/sumeshkanayi/alertmanager/cluster"
+	"github.com/sumeshkanayi/alertmanager/config"
+	"github.com/sumeshkanayi/alertmanager/dispatch"
+	"github.com/sumeshkanayi/alertmanager/pkg/parse"
+	"github.com/sumeshkanayi/alertmanager/provider"
+	"github.com/sumeshkanayi/alertmanager/silence"
+	"github.com/sumeshkanayi/alertmanager/silence/silencepb"
+	"github.com/sumeshkanayi/alertmanager/types"
 )
 
 var corsHeaders = map[string]string{

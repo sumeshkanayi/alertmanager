@@ -26,11 +26,11 @@ import (
 	"github.com/prometheus/common/model"
 	"github.com/stretchr/testify/require"
 
-	"github.com/prometheus/alertmanager/nflog"
-	"github.com/prometheus/alertmanager/nflog/nflogpb"
-	"github.com/prometheus/alertmanager/silence"
-	"github.com/prometheus/alertmanager/silence/silencepb"
-	"github.com/prometheus/alertmanager/types"
+	"github.com/sumeshkanayi/alertmanager/nflog"
+	"github.com/sumeshkanayi/alertmanager/nflog/nflogpb"
+	"github.com/sumeshkanayi/alertmanager/silence"
+	"github.com/sumeshkanayi/alertmanager/silence/silencepb"
+	"github.com/sumeshkanayi/alertmanager/types"
 )
 
 type notifierConfigFunc func() bool

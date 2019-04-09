@@ -13,7 +13,7 @@ import (
 	"os"
 )
 
-func createTritonInstance(keyID string, accountName string, packageName string, imageName string, networks []string, cloudApi string, services []string) (error,compute.Instance){
+func createTritonInstance(keyID string, accountName string, packageName string, imageName string, networks []string, cloudApi string, services []string) (error,*compute.Instance){
 
 	keyMaterial := os.Getenv("TRITON_KEY_MATERIAL")
 

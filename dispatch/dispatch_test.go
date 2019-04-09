@@ -24,8 +24,8 @@ import (
 	"github.com/go-kit/kit/log"
 	"github.com/prometheus/common/model"
 
-	"github.com/prometheus/alertmanager/notify"
-	"github.com/prometheus/alertmanager/types"
+	"github.com/sumeshkanayi/alertmanager/notify"
+	"github.com/sumeshkanayi/alertmanager/types"
 )
 
 func TestAggrGroup(t *testing.T) {

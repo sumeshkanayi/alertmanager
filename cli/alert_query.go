@@ -20,9 +20,9 @@ import (
 
 	kingpin "gopkg.in/alecthomas/kingpin.v2"
 
-	"github.com/prometheus/alertmanager/api/v2/client/alert"
-	"github.com/prometheus/alertmanager/cli/format"
-	"github.com/prometheus/alertmanager/pkg/parse"
+	"github.com/sumeshkanayi/alertmanager/api/v2/client/alert"
+	"github.com/sumeshkanayi/alertmanager/cli/format"
+	"github.com/sumeshkanayi/alertmanager/pkg/parse"
 )
 
 type alertQueryCmd struct {

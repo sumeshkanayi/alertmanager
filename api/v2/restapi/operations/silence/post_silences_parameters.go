@@ -27,7 +27,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/runtime/middleware"
 
-	models "github.com/prometheus/alertmanager/api/v2/models"
+	models "github.com/sumeshkanayi/alertmanager/api/v2/models"
 )
 
 // NewPostSilencesParams creates a new PostSilencesParams object

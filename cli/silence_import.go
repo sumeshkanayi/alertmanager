@@ -23,8 +23,8 @@ import (
 	"github.com/pkg/errors"
 	kingpin "gopkg.in/alecthomas/kingpin.v2"
 
-	"github.com/prometheus/alertmanager/api/v2/client/silence"
-	"github.com/prometheus/alertmanager/api/v2/models"
+	"github.com/sumeshkanayi/alertmanager/api/v2/client/silence"
+	"github.com/sumeshkanayi/alertmanager/api/v2/models"
 )
 
 type silenceImportCmd struct {

@@ -32,7 +32,7 @@ import (
 	"github.com/prometheus/client_golang/api"
 	"github.com/prometheus/common/model"
 
-	"github.com/prometheus/alertmanager/client"
+	"github.com/sumeshkanayi/alertmanager/client"
 )
 
 // AcceptanceTest provides declarative definition of given inputs and expected

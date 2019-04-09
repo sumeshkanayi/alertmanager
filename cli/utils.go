@@ -21,12 +21,12 @@ import (
 	"os"
 	"path"
 
-	"github.com/prometheus/alertmanager/api/v2/client/general"
-	"github.com/prometheus/alertmanager/api/v2/models"
-	"github.com/prometheus/alertmanager/config"
+	"github.com/sumeshkanayi/alertmanager/api/v2/client/general"
+	"github.com/sumeshkanayi/alertmanager/api/v2/models"
+	"github.com/sumeshkanayi/alertmanager/config"
 	kingpin "gopkg.in/alecthomas/kingpin.v2"
 
-	"github.com/prometheus/alertmanager/pkg/parse"
+	"github.com/sumeshkanayi/alertmanager/pkg/parse"
 	"github.com/prometheus/common/model"
 	"github.com/prometheus/prometheus/pkg/labels"
 )

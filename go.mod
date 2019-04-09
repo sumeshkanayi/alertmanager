@@ -1,4 +1,4 @@
-module github.com/prometheus/alertmanager
+module github.com/sumeshkanayi/alertmanager
 
 require (
 	github.com/cenkalti/backoff v0.0.0-20181003080854-62661b46c409

@@ -18,7 +18,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/prometheus/alertmanager/types"
+	"github.com/sumeshkanayi/alertmanager/types"
 	"github.com/prometheus/common/model"
 	"github.com/stretchr/testify/require"
 )

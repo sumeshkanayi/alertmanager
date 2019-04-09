@@ -35,7 +35,7 @@ func importPathToDir(importPath string) string {
 }
 
 var static http.FileSystem = filter.Keep(
-	http.Dir(importPathToDir("github.com/prometheus/alertmanager/ui/app")),
+	http.Dir(importPathToDir("github.com/sumeshkanayi/alertmanager/ui/app")),
 	func(path string, fi os.FileInfo) bool {
 		return path == "/" ||
 			path == "/script.js" ||
@@ -46,7 +46,7 @@ var static http.FileSystem = filter.Keep(
 )
 
 var templates http.FileSystem = filter.Keep(
-	http.Dir(importPathToDir("github.com/prometheus/alertmanager/template")),
+	http.Dir(importPathToDir("github.com/sumeshkanayi/alertmanager/template")),
 	func(path string, fi os.FileInfo) bool {
 		return path == "/" || path == "/default.tmpl"
 	},

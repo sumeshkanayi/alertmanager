@@ -62,7 +62,7 @@ deprecated. API v1 will be removed with Alertmanager release v0.18.0.
 * [BUGFIX] [amtool] Fix rfc3339 example texts (#1526)
 * [BUGFIX] [amtool] Fixed issue with loading path of a default configs (#1529)
 
-[1] https://github.com/prometheus/alertmanager#api
+[1] https://github.com/sumeshkanayi/alertmanager#api
 
 ## 0.15.3 / 2018-11-09
 
@@ -288,20 +288,20 @@ deprecated. API v1 will be removed with Alertmanager release v0.18.0.
 
 ## 0.6.0 / 2017-04-25
 
-* [BUGFIX] Add `groupKey` to `alerts/groups` endpoint https://github.com/prometheus/alertmanager/pull/576
-* [BUGFIX] Only notify on firing alerts https://github.com/prometheus/alertmanager/pull/595
-* [BUGFIX] Correctly marshal regex's in config for routing tree https://github.com/prometheus/alertmanager/pull/602
-* [BUGFIX] Prevent panic when failing to load config https://github.com/prometheus/alertmanager/pull/607
-* [BUGFIX] Prevent panic when alertmanager is started with an empty `-mesh.peer` https://github.com/prometheus/alertmanager/pull/726
-* [CHANGE] Rename VictorOps config variables https://github.com/prometheus/alertmanager/pull/667
-* [CHANGE] No longer generate releases for openbsd/arm https://github.com/prometheus/alertmanager/pull/732
-* [ENHANCEMENT] Add `DELETE` as accepted CORS method https://github.com/prometheus/alertmanager/commit/0ecc59076ca6b4cbb63252fa7720a3d89d1c81d3
-* [ENHANCEMENT] Switch to using `gogoproto` for protobuf https://github.com/prometheus/alertmanager/pull/715
-* [ENHANCEMENT] Include notifier type in logs and errors https://github.com/prometheus/alertmanager/pull/702
-* [FEATURE] Expose mesh peers on status page https://github.com/prometheus/alertmanager/pull/644
-* [FEATURE] Add `reReplaceAll` template function https://github.com/prometheus/alertmanager/pull/639
-* [FEATURE] Allow label-based filtering alerts/silences through API https://github.com/prometheus/alertmanager/pull/633
-* [FEATURE] Add commandline tool for interacting with alertmanager https://github.com/prometheus/alertmanager/pull/636
+* [BUGFIX] Add `groupKey` to `alerts/groups` endpoint https://github.com/sumeshkanayi/alertmanager/pull/576
+* [BUGFIX] Only notify on firing alerts https://github.com/sumeshkanayi/alertmanager/pull/595
+* [BUGFIX] Correctly marshal regex's in config for routing tree https://github.com/sumeshkanayi/alertmanager/pull/602
+* [BUGFIX] Prevent panic when failing to load config https://github.com/sumeshkanayi/alertmanager/pull/607
+* [BUGFIX] Prevent panic when alertmanager is started with an empty `-mesh.peer` https://github.com/sumeshkanayi/alertmanager/pull/726
+* [CHANGE] Rename VictorOps config variables https://github.com/sumeshkanayi/alertmanager/pull/667
+* [CHANGE] No longer generate releases for openbsd/arm https://github.com/sumeshkanayi/alertmanager/pull/732
+* [ENHANCEMENT] Add `DELETE` as accepted CORS method https://github.com/sumeshkanayi/alertmanager/commit/0ecc59076ca6b4cbb63252fa7720a3d89d1c81d3
+* [ENHANCEMENT] Switch to using `gogoproto` for protobuf https://github.com/sumeshkanayi/alertmanager/pull/715
+* [ENHANCEMENT] Include notifier type in logs and errors https://github.com/sumeshkanayi/alertmanager/pull/702
+* [FEATURE] Expose mesh peers on status page https://github.com/sumeshkanayi/alertmanager/pull/644
+* [FEATURE] Add `reReplaceAll` template function https://github.com/sumeshkanayi/alertmanager/pull/639
+* [FEATURE] Allow label-based filtering alerts/silences through API https://github.com/sumeshkanayi/alertmanager/pull/633
+* [FEATURE] Add commandline tool for interacting with alertmanager https://github.com/sumeshkanayi/alertmanager/pull/636
 
 ## 0.5.1 / 2016-11-24
 

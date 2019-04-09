@@ -1,6 +1,6 @@
 {-
    Alertmanager API
-   API of the Prometheus Alertmanager (https://github.com/prometheus/alertmanager)
+   API of the Prometheus Alertmanager (https://github.com/sumeshkanayi/alertmanager)
 
    OpenAPI spec version: 0.0.1
 

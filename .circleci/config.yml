@@ -25,7 +25,7 @@ jobs:
       - pass
 
     # errcheck requires to be executed from GOPATH for now.
-    working_directory: /go/src/github.com/prometheus/alertmanager
+    working_directory: /go/src/github.com/sumeshkanayi/alertmanager
 
     environment:
       EMAIL_NO_AUTH_CONFIG: /tmp/smtp_no_auth.yml
@@ -66,7 +66,7 @@ jobs:
 
   build:
     machine: true
-    working_directory: /home/circleci/.go_workspace/src/github.com/prometheus/alertmanager
+    working_directory: /home/circleci/.go_workspace/src/github.com/sumeshkanayi/alertmanager
 
     steps:
     - checkout

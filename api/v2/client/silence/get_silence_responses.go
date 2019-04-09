@@ -27,7 +27,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	models "github.com/prometheus/alertmanager/api/v2/models"
+	models "github.com/sumeshkanayi/alertmanager/api/v2/models"
 )
 
 // GetSilenceReader is a Reader for the GetSilence structure.

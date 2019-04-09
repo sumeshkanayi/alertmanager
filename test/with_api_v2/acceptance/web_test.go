@@ -16,7 +16,7 @@ package test
 import (
 	"testing"
 
-	a "github.com/prometheus/alertmanager/test/with_api_v2"
+	a "github.com/sumeshkanayi/alertmanager/test/with_api_v2"
 )
 
 func TestWebWithPrefix(t *testing.T) {

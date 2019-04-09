@@ -21,7 +21,7 @@ import (
 	"github.com/go-kit/kit/log/level"
 	"github.com/gogo/protobuf/proto"
 	"github.com/hashicorp/memberlist"
-	"github.com/prometheus/alertmanager/cluster/clusterpb"
+	"github.com/sumeshkanayi/alertmanager/cluster/clusterpb"
 	"github.com/prometheus/client_golang/prometheus"
 )
 

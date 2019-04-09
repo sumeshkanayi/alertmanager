@@ -20,8 +20,8 @@ import (
 
 	"github.com/xlab/treeprint"
 
-	"github.com/prometheus/alertmanager/api/v2/models"
-	"github.com/prometheus/alertmanager/dispatch"
+	"github.com/sumeshkanayi/alertmanager/api/v2/models"
+	"github.com/sumeshkanayi/alertmanager/dispatch"
 	kingpin "gopkg.in/alecthomas/kingpin.v2"
 )
 

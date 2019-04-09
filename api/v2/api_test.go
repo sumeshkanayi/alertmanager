@@ -20,9 +20,9 @@ import (
 
 	"github.com/go-openapi/strfmt"
 
-	open_api_models "github.com/prometheus/alertmanager/api/v2/models"
-	general_ops "github.com/prometheus/alertmanager/api/v2/restapi/operations/general"
-	"github.com/prometheus/alertmanager/config"
+	open_api_models "github.com/sumeshkanayi/alertmanager/api/v2/models"
+	general_ops "github.com/sumeshkanayi/alertmanager/api/v2/restapi/operations/general"
+	"github.com/sumeshkanayi/alertmanager/config"
 )
 
 // If api.peers == nil, Alertmanager cluster feature is disabled. Make sure to

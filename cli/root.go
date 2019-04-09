@@ -22,9 +22,9 @@ import (
 	"github.com/prometheus/common/version"
 	kingpin "gopkg.in/alecthomas/kingpin.v2"
 
-	"github.com/prometheus/alertmanager/api/v2/client"
-	"github.com/prometheus/alertmanager/cli/config"
-	"github.com/prometheus/alertmanager/cli/format"
+	"github.com/sumeshkanayi/alertmanager/api/v2/client"
+	"github.com/sumeshkanayi/alertmanager/cli/config"
+	"github.com/sumeshkanayi/alertmanager/cli/format"
 )
 
 var (

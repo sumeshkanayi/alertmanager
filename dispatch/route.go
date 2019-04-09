@@ -21,8 +21,8 @@ import (
 
 	"github.com/prometheus/common/model"
 
-	"github.com/prometheus/alertmanager/config"
-	"github.com/prometheus/alertmanager/types"
+	"github.com/sumeshkanayi/alertmanager/config"
+	"github.com/sumeshkanayi/alertmanager/types"
 )
 
 // DefaultRouteOpts are the defaulting routing options which apply

@@ -13,7 +13,7 @@
 
 package main
 
-import "github.com/prometheus/alertmanager/cli"
+import "github.com/sumeshkanayi/alertmanager/cli"
 
 func main() {
 	cli.Execute()

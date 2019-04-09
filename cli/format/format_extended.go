@@ -21,7 +21,7 @@ import (
 	"strings"
 	"text/tabwriter"
 
-	"github.com/prometheus/alertmanager/api/v2/models"
+	"github.com/sumeshkanayi/alertmanager/api/v2/models"
 )
 
 type ExtendedFormatter struct {

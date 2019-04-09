@@ -17,8 +17,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/prometheus/alertmanager/config"
-	"github.com/prometheus/alertmanager/template"
+	"github.com/sumeshkanayi/alertmanager/config"
+	"github.com/sumeshkanayi/alertmanager/template"
 	"gopkg.in/alecthomas/kingpin.v2"
 )
 

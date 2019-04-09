@@ -23,7 +23,7 @@ import (
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/prometheus/common/route"
 
-	"github.com/prometheus/alertmanager/asset"
+	"github.com/sumeshkanayi/alertmanager/asset"
 )
 
 // Register registers handlers to serve files for the web interface.

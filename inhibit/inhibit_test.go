@@ -21,10 +21,10 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/common/model"
 
-	"github.com/prometheus/alertmanager/config"
-	"github.com/prometheus/alertmanager/provider"
-	"github.com/prometheus/alertmanager/store"
-	"github.com/prometheus/alertmanager/types"
+	"github.com/sumeshkanayi/alertmanager/config"
+	"github.com/sumeshkanayi/alertmanager/provider"
+	"github.com/sumeshkanayi/alertmanager/store"
+	"github.com/sumeshkanayi/alertmanager/types"
 )
 
 var nopLogger = log.NewNopLogger()

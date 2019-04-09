@@ -16,7 +16,7 @@ package format
 import (
 	"time"
 
-	"github.com/prometheus/alertmanager/api/v2/models"
+	"github.com/sumeshkanayi/alertmanager/api/v2/models"
 )
 
 type ByEndAt []models.GettableSilence

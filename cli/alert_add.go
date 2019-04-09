@@ -20,8 +20,8 @@ import (
 	"time"
 
 	"github.com/go-openapi/strfmt"
-	"github.com/prometheus/alertmanager/api/v2/client/alert"
-	"github.com/prometheus/alertmanager/api/v2/models"
+	"github.com/sumeshkanayi/alertmanager/api/v2/client/alert"
+	"github.com/sumeshkanayi/alertmanager/api/v2/models"
 	kingpin "gopkg.in/alecthomas/kingpin.v2"
 )
 

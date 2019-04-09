@@ -28,8 +28,8 @@ import (
 
 	"github.com/prometheus/common/model"
 
-	"github.com/prometheus/alertmanager/asset"
-	"github.com/prometheus/alertmanager/types"
+	"github.com/sumeshkanayi/alertmanager/asset"
+	"github.com/sumeshkanayi/alertmanager/types"
 )
 
 // Template bundles a text and a html template instance.

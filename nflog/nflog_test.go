@@ -21,7 +21,7 @@ import (
 	"testing"
 	"time"
 
-	pb "github.com/prometheus/alertmanager/nflog/nflogpb"
+	pb "github.com/sumeshkanayi/alertmanager/nflog/nflogpb"
 	"github.com/stretchr/testify/require"
 )
 

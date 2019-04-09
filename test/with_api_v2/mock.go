@@ -22,9 +22,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/prometheus/alertmanager/notify"
+	"github.com/sumeshkanayi/alertmanager/notify"
 
-	"github.com/prometheus/alertmanager/api/v2/models"
+	"github.com/sumeshkanayi/alertmanager/api/v2/models"
 
 	"github.com/go-openapi/strfmt"
 )

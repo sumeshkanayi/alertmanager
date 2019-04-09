@@ -20,7 +20,7 @@ import (
 	kingpin "gopkg.in/alecthomas/kingpin.v2"
 
 	"github.com/go-openapi/strfmt"
-	"github.com/prometheus/alertmanager/api/v2/models"
+	"github.com/sumeshkanayi/alertmanager/api/v2/models"
 )
 
 const DefaultDateFormat = "2006-01-02 15:04:05 MST"

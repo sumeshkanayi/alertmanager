@@ -19,8 +19,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/prometheus/alertmanager/api/v2/models"
-	"github.com/prometheus/alertmanager/dispatch"
+	"github.com/sumeshkanayi/alertmanager/api/v2/models"
+	"github.com/sumeshkanayi/alertmanager/dispatch"
 	"github.com/xlab/treeprint"
 	kingpin "gopkg.in/alecthomas/kingpin.v2"
 )

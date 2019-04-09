@@ -24,8 +24,8 @@ import (
 	"time"
 
 	"github.com/matttproud/golang_protobuf_extensions/pbutil"
-	pb "github.com/prometheus/alertmanager/silence/silencepb"
-	"github.com/prometheus/alertmanager/types"
+	pb "github.com/sumeshkanayi/alertmanager/silence/silencepb"
+	"github.com/sumeshkanayi/alertmanager/types"
 	"github.com/prometheus/common/model"
 	"github.com/stretchr/testify/require"
 )
