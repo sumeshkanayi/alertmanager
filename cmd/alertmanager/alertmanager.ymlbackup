@@ -29,6 +29,7 @@
       key: "5a:79:ef:d9:6a:8a:32:57:7e:fb:9c:73:9c:bb:a5:7a"
       cloud_api: "https://us-east-1-cloudapi.bdf-cloud.iqvia.net"
       acount: "devops_dev"
+      count: 3
       services:
         - "abc"
         - "def"
