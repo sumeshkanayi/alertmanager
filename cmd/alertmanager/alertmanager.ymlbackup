@@ -15,8 +15,11 @@
     webhook_configs:
     - url: 'http://alerta:8080/api/webhooks/prometheus'
       send_resolved: true
-      header_key: "ST2_API_TOKEN"
-      header_value: "blah"
+      headers:
+       - header_key: "ST2_API_TOKEN"
+         header_value: "blah"
+       - header_key: "app"
+         header_value: "stack"
   - name: "alerta"
     triton_configs:
     - image: "a3bc0af4-0ab7-4293-a800-23a2d60a760a"
