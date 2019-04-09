@@ -32,9 +32,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/prometheus/alertmanager/config"
-	"github.com/prometheus/alertmanager/template"
-	"github.com/prometheus/alertmanager/types"
+	"github.com/sumeshkanayi/alertmanager/config"
+	"github.com/sumeshkanayi/alertmanager/template"
+	"github.com/sumeshkanayi/alertmanager/types"
 )
 
 // A Notifier notifies about alerts under constraints of the given context.
