@@ -35,6 +35,7 @@ import (
 	"github.com/sumeshkanayi/alertmanager/config"
 	"github.com/sumeshkanayi/alertmanager/template"
 	"github.com/sumeshkanayi/alertmanager/types"
+
 )
 
 // A Notifier notifies about alerts under constraints of the given context.
@@ -148,14 +149,20 @@ func NewTriton(conf *config.TritonConfig, t *template.Template, l log.Logger) *T
 	return &Triton{conf: conf, tmpl: t, logger: l}
 }
 
-func (w *Triton) Notify(ctx context.Context, alerts ...*types.Alert) (bool, error) {
+func (t *Triton) Notify(ctx context.Context, alerts ...*types.Alert) (bool, error) {
 
-	fmt.Println(w.conf)
-	fmt.Println(w.conf.NotifierConfig)
-	fmt.Println(w.conf)
-	fmt.Println(w.tmpl)
-	createTritonInstance(w.conf.Key, w.conf.Account, w.conf.Package, w.conf.Image, w.conf.Networks, w.conf.CloudApi, w.conf.Services)
-	return true, nil
+
+
+
+
+	level.Debug(t.logger).Log("triggering triton instance creation ", t.conf.CloudApi)
+
+	err,instanceDetails:=createTritonInstance(t.conf.Key, t.conf.Account, t.conf.Package, t.conf.Image, t.conf.Networks, t.conf.CloudApi, t.conf.Services)
+	if err!=nil{
+		level.Error(t.logger).Log("instance creation failed", err)
+	}
+	level.Debug(t.logger).Log("instance creation completed", "success","id",instanceDetails.ID,"cns",instanceDetails.CNS)
+	return true, err
 }
 
 // WebhookMessage defines the JSON object send to webhook endpoints.

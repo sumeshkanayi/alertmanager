@@ -13,7 +13,7 @@ import (
 	"os"
 )
 
-func createTritonInstance(keyID string, accountName string, packageName string, imageName string, networks []string, cloudApi string, services []string) {
+func createTritonInstance(keyID string, accountName string, packageName string, imageName string, networks []string, cloudApi string, services []string) (error,compute.Instance){
 
 	keyMaterial := os.Getenv("TRITON_KEY_MATERIAL")
 
@@ -75,6 +75,7 @@ func createTritonInstance(keyID string, accountName string, packageName string, 
 	}
 
 	c, err := compute.NewClient(config)
+
 	if err != nil {
 		log.Fatalf("compute.NewClient: %s", err)
 		log.Println("clinet is ", c)
@@ -86,7 +87,7 @@ func createTritonInstance(keyID string, accountName string, packageName string, 
 		Disable:  false,
 		Services: services,
 	}
-	input := &compute.CreateInstanceInput{
+	inputList := &compute.CreateInstanceInput{
 
 		NamePrefix: accountName,
 		Package:    packageName,
@@ -94,6 +95,7 @@ func createTritonInstance(keyID string, accountName string, packageName string, 
 		Networks:   networks,
 		CNS:        cns,
 	}
-	computeInstance.Create(ctx, input)
+	instanceOut,err:=computeInstance.Create(ctx, inputList)
+	return err,instanceOut
 
 }
