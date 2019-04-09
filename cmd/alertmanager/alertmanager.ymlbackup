@@ -15,6 +15,10 @@
     webhook_configs:
     - url: 'http://alerta:8080/api/webhooks/prometheus'
       send_resolved: true
+      http_config:
+       tls_config:
+         insecure_skip_verify: false
+
       headers:
        - header_key: "ST2_API_TOKEN"
          header_value: "blah"
