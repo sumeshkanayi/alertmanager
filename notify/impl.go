@@ -151,15 +151,11 @@ func NewTriton(conf *config.TritonConfig, t *template.Template, l log.Logger) *T
 func (t *Triton) Notify(ctx context.Context, alerts ...*types.Alert) (bool, error) {
 
 	level.Debug(t.logger).Log("triggering triton instance creation ", t.conf.CloudApi)
-    for i:=0;i<t.conf.Count;i++{
-		err, _ := createTritonInstance(t.conf.Key, t.conf.Account, t.conf.Package, t.conf.Image, t.conf.Networks, t.conf.CloudApi, t.conf.Services)
-		if err != nil {
-			level.Error(t.logger).Log("instance creation failed", err)
-		}else {
-			level.Debug(t.logger).Log("instance creation completed", "success")
-		}
-	}
-	return true, nil
+  
+	err, _ := createTritonInstance(t.conf.Key, t.conf.Account, t.conf.Package, t.conf.Image, t.conf.Networks, t.conf.CloudApi, t.conf.Services)
+		
+	
+	return true, err
 }
 
 // WebhookMessage defines the JSON object send to webhook endpoints.
